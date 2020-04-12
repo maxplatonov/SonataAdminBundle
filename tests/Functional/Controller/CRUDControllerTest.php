@@ -13,8 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\AdminBundle\Tests\Functional\Controller;
 
-use Sonata\AdminBundle\Tests\App\AppKernel;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Sonata\AdminBundle\Tests\Functional\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -66,10 +65,5 @@ final class CRUDControllerTest extends WebTestCase
             1,
             $crawler->filter('.sonata-ba-collapsed-fields label:contains("Name")')->count()
         );
-    }
-
-    protected static function getKernelClass()
-    {
-        return AppKernel::class;
     }
 }

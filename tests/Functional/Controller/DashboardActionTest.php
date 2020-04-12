@@ -13,17 +13,15 @@ declare(strict_types=1);
 
 namespace Sonata\AdminBundle\Tests\Functional\Controller;
 
-use PHPUnit\Framework\TestCase;
-use Sonata\AdminBundle\Tests\App\AppKernel;
-use Symfony\Bundle\FrameworkBundle\Client;
+use Sonata\AdminBundle\Tests\Functional\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-final class DashboardActionTest extends TestCase
+final class DashboardActionTest extends WebTestCase
 {
     public function testDashboard(): void
     {
-        $client = new Client(new AppKernel());
+        $client = static::createClient();
         $client->request(Request::METHOD_GET, '/admin/dashboard');
 
         $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
