@@ -13,18 +13,20 @@ declare(strict_types=1);
 
 namespace Sonata\AdminBundle\Tests\App\Admin;
 
+use Knp\Menu\ItemInterface as MenuItemInterface;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
+use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\AdminBundle\Tests\App\Model\Foo;
+use Sonata\AdminBundle\Tests\App\Model\PR6031;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-final class FooAdmin extends AbstractAdmin
+final class PR6031Admin extends AbstractAdmin
 {
     public function getNewInstance()
     {
-        return new Foo('test_id', 'foo_name');
+        return new PR6031('pr_6031', 'pr_6031');
     }
 
     protected function configureListFields(ListMapper $list)
@@ -40,5 +42,11 @@ final class FooAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $show)
     {
         $show->add('name', 'string');
+    }
+
+    protected function configureTabMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
+    {
+        $menu
+            ->addChild('label')->addChild('label');
     }
 }

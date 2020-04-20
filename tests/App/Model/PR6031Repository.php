@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\AdminBundle\Tests\App\Model;
 
-final class FooRepository implements RepositoryInterface
+final class PR6031Repository implements RepositoryInterface
 {
     /**
      * @var array<class-string, Foo>
@@ -23,18 +23,15 @@ final class FooRepository implements RepositoryInterface
     public function __construct()
     {
         $this->elements = [
-            'test_id' => new Foo('test_id', 'foo_name'),
+            'pr_6031' => new PR6031('pr_6031', 'pr_6031'),
         ];
     }
 
-    public function byId(string $id): ?Foo
+    public function byId(string $id): ?PR6031
     {
         return $this->elements[$id] ?? null;
     }
 
-    /**
-     * @return Foo[]
-     */
     public function all(): array
     {
         return $this->elements;
